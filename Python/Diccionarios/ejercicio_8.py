@@ -1,11 +1,3 @@
-"""
-Escribir un programa que cree un diccionario de traducción español-inglés.
-El usuario introducirá las palabras en español e inglés separadas por dos puntos, y cada par <palabra>:<traducción>
-separados por comas. El programa debe crear un diccionario con las palabras y sus traducciones.
-Después pedirá una frase en español y utilizará el diccionario para traducirla palabra a palabra.
-Si una palabra no está en el diccionario debe dejarla sin traducir.
-"""
-
 spn_eng = {}
 
 # Bucle para ingresar palabras
@@ -31,3 +23,10 @@ while True:
 print("\nDiccionario de traducción:")
 for esp, eng in spn_eng.items():
     print(f"{esp} -> {eng}")
+
+# Traducir una frase
+frase = input("\nIntroduce una frase en español: ")
+traduccion = " ".join(spn_eng.get(palabra, palabra) for palabra in frase.split())
+
+print("\nFrase traducida:")
+print(traduccion)
