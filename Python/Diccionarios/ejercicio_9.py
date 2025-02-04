@@ -34,3 +34,73 @@ while continuar:
             break
     else:
         print("Se ha producido un error")
+
+
+"""MEJORA"""
+
+# Diccionario para almacenar facturas
+facturas = {}
+
+# Variables para el control de los montos
+total_pendiente = 0
+total_cobrado = 0
+
+while True:
+    print("\n===== MENÚ =====")
+    print("1. Añadir Factura")
+    print("2. Pagar Factura")
+    print("3. Salir")
+
+    try:
+        opcion = int(input("Selecciona una opción: "))
+
+        if opcion == 1:
+            num_factura = input("Introduce el número de factura: ")
+            if num_factura in facturas:
+                print("⚠️ La factura ya existe.")
+                continue
+
+            try:
+                precio = float(input("Introduce el coste de la factura: "))
+                if precio <= 0:
+                    print("⚠️ El precio debe ser un número positivo.")
+                    continue
+                facturas[num_factura] = precio
+                total_pendiente += precio
+                print(f"✅ Factura {num_factura} añadida con un costo de {precio:.2f}€.")
+            except ValueError:
+                print("⚠️ Ingresa un valor numérico válido para el coste.")
+
+        elif opcion == 2:
+            if not facturas:
+                print("⚠️ No hay facturas pendientes.")
+                continue
+
+            print("\nFacturas pendientes:")
+            for num, costo in facturas.items():
+                print(f"📄 Factura {num}: {costo:.2f}€")
+
+            num_factura = input("Introduce el número de la factura a pagar: ")
+
+            if num_factura in facturas:
+                monto_pagado = facturas.pop(num_factura)
+                total_pendiente -= monto_pagado
+                total_cobrado += monto_pagado
+                print(f"✅ Factura {num_factura} pagada por {monto_pagado:.2f}€.")
+            else:
+                print("⚠️ La factura no existe.")
+
+        elif opcion == 3:
+            salir = input("¿Estás seguro de que deseas salir? (Si/No): ").strip().lower()
+            if salir == "si":
+                print(f"\n💰 Total cobrado: {total_cobrado:.2f}€")
+                print(f"💼 Total pendiente: {total_pendiente:.2f}€")
+                print("✅ Saliendo del programa.")
+                break
+
+        else:
+            print("⚠️ Opción no válida. Elige una opción del 1 al 3.")
+
+    except ValueError:
+        print("⚠️ Ingresa un número válido.")
+
