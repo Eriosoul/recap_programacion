@@ -5,11 +5,11 @@ y una de las funciones anteriores, y utilice la función pasada para aplicar los
 la cesta y devolver el precio final de la cesta.
 """
 
-def descuento():
+def aplicar_descuento(precio, porcentaje):  # 💡 Necesita parámetros
     pass
 
-def aplicar_IVA():
+def aplicar_IVA(precio, porcentaje=21):  # 💡 IVA con valor por defecto
     pass
 
-def fun_principal():
+def calcular_total(cesta, funcion):  # 💡 Recibe el diccionario y la función a aplicar
     pass
