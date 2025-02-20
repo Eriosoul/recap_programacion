@@ -12,15 +12,33 @@ def seno():
         print("⚠️ Error: La hipotenusa no puede ser 0.")
         return None
 
-    resultado = cateto_opuesto / hipotenusa
-    print(f"✅ El seno del ángulo es: {resultado:.4f}")
-    return resultado
+    resultado_seno = cateto_opuesto / hipotenusa
+    print(f"✅ El seno del ángulo es: {resultado_seno:.4f}")
+    return resultado_seno
 
 #  Coseno: sen(α) = x r = OQ r
 def coseno():
-    pass
-def tangente():
-    pass
+    cateto_adyacente = float(input("Introduce el cateto opuesto: "))
+    hipotenusa = float(input("Introduce la hipotenusa: "))
+    if hipotenusa == 0:  # Evitar división por cero
+        print("⚠️ Error: La hipotenusa no puede ser 0.")
+        return None
+
+    resultado_coseno = cateto_adyacente / hipotenusa
+    print(f"✅ El seno del ángulo es: {resultado_coseno:.4f}")
+    return resultado_coseno
+
+def tangente(r_seno, r_coseno):
+    cateto_opuesto = float(input("Introduce el cateto opuesto: "))
+    cateto_adyacente = float(input("Introduce la hipotenusa: "))
+    if cateto_adyacente == 0:  # Evitar división por cero
+        print("⚠️ Error: La hipotenusa no puede ser 0.")
+        return None
+
+    resultado_tang = cateto_opuesto / cateto_adyacente
+    print(f"✅ El seno del ángulo es: {resultado_tang:.4f}")
+    return resultado_tang
+
 def exponencial():
     pass
 def logaritmo_neperiano():
